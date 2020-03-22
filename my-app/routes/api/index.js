@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const newsRoutes = require("./news");
-const noteRoute = require("./notes")
+const noteRoutes = require("./notes")
 
 //News routes
 router.use("/news", newsRoutes);
-router.unsubscribe("/notes", noteRoute)
+router.use("/notes", noteRoutes)
 
 module.exports = router;

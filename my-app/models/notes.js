@@ -8,6 +8,6 @@ const noteSchema = new Schema({
     articalLink: { type: String, require: true }
 })
 
-const Notes = mongoose.model("News", noteSchema);
+const Notes = mongoose.model("Notes", noteSchema);
 
 module.exports = Notes;
