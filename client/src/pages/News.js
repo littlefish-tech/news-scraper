@@ -29,6 +29,11 @@ export default withStyles(styles)( class News extends Component {
         API.getNews()
         .then(res => this.setState({ news: res.data}))
         console.log(this.state.articles)
+        .then(news => {
+        this.setState({
+            news: [...this.setState.news, ...news]
+        });
+        }).catch(err => console.log(err))
     }
 
     // handleChange = (
@@ -69,6 +74,7 @@ export default withStyles(styles)( class News extends Component {
                     return (
                         <New 
                         title={this.state.title}
+
 
                         />
                     )
