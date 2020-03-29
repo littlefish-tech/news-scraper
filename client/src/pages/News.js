@@ -5,7 +5,7 @@ import API from "../utils/API";
 // import 'typeface-roboto';
 import {Paper, Typography, TextField, Button } from '@material-ui/core';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import { Delete } from '@material-ui/icons';
+import { Delete, ContactsOutlined } from '@material-ui/icons';
 import { ListItemSecondaryAction,  IconButton} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import SaveBtn from"../components/SaveBtn";
@@ -13,20 +13,20 @@ import SaveBtn from"../components/SaveBtn";
 const styles = {  root: { margin: 20, padding: 20, maxWidth: 400 },
 form: { display: 'flex', alignItems: 'baseline', justifyContent: 'space-evenly' }};
 
-export default withStyles(styles)( class News extends Component {
-
+// export default withStyles(styles)( class News extends Component {
+    class News extends Component {
     state = {
-        articles: [],
+        news: [],
         savedArticles: [],
         title: "",
-        summary: "",
-        images: "",
-        articleLink: ""
+        // summary: "",
+        // images: "",
+        newsLink: ""
     }
 
     componentDidMount() {
         API.getNews()
-        .then(res => this.setState({ articles: res.data}))
+        .then(res => this.setState({ news: res.data}))
         console.log(this.state.articles)
     }
 
@@ -49,11 +49,20 @@ export default withStyles(styles)( class News extends Component {
     //     )
 
 
+    handleSaveSubmit = id => {
+        const newArt = this.state.news.find(newArt => newArt.id ===id)
+        API.saveNews({
+            title: this.state.title,
+            newsLink: this.state.newsLink
+        })
+    }
+
     render(){
         
         // const { title, exercises } = this.state 
         // const { classes } = this.props
         return(
+            
             // <Paper className={classes.root}>
             // <Typography variant='h3' align='center' gutterBottom>        Exercises      </Typography>
             // <form><TextField name="title" label="Exercise" value={title} onChange={this.handleChange} margin='normal' />
@@ -68,7 +77,9 @@ export default withStyles(styles)( class News extends Component {
             <div>Hello</div>
         )}
 
-})
+}
 
-// export default News;
+// )
+
+export default News;
 

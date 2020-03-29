@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <Nav/> */}
+        <Nav/>
         <Switch>
           <Route exact path="/" component={News} />
           <Route exact path="/news" component={News} />
